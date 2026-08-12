@@ -67,9 +67,9 @@ const priceToNumber = price => Number(price.replace(/\./g, ''))
 const formatPrice = value => new Intl.NumberFormat('es-CO').format(value)
 
 const reels = [
-  ['DRxwemmlaFh', 'Parrilla y cocina Calisto'],
-  ['DWPH1ZEj44i', 'Burger Calisto en primer plano'],
-  ['DYAokC0if2r', 'Experiencia Calisto Burger & BBQ'],
+  ['DRxwemmlaFh', 'Parrilla y cocina Calisto', '/images/calisto/hero-official.webp'],
+  ['DWPH1ZEj44i', 'Burger Calisto en primer plano', '/images/calisto/costillas-st-louis.webp'],
+  ['DYAokC0if2r', 'Experiencia Calisto Burger & BBQ', '/images/calisto/arrechera.webp'],
 ]
 
 function useRoute() {
@@ -146,7 +146,7 @@ function CustomCursor() {
 }
 
 function Brand({ go, onClick }) {
-  return <button className="brand" onClick={() => { go('/'); onClick?.() }} aria-label="Ir al inicio de Calisto"><img src="/images/calisto/logo-calisto-white-2x.png" alt="Calisto" /></button>
+  return <button className="brand" onClick={() => { go('/'); onClick?.() }} aria-label="Ir al inicio de Calisto"><img src="/images/calisto/logo-calisto-white.webp" alt="Calisto" width="640" height="206" /></button>
 }
 
 function Header({ go, openMenu, path, menuOpen }) {
@@ -224,7 +224,7 @@ function Hero({ go }) {
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-embers" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
       <div className="hero-heat" ref={heat} aria-hidden="true" />
-      <div className="hero-brand-intro" aria-hidden="true"><img src="/images/calisto/logo-calisto-white-2x.png" alt="" /><span className="hero-brand-burn" /></div>
+      <div className="hero-brand-intro" aria-hidden="true"><img src="/images/calisto/logo-calisto-white.webp" alt="" width="640" height="206" /><span className="hero-brand-burn" /></div>
       <div className="hero-copy">
         <p className="hero-kicker">CALISTO / BURGER & BBQ</p>
         <h1 className="hero-title"><span>EL FUEGO</span><span>TIENE NOMBRE.</span></h1>
@@ -407,7 +407,7 @@ function Home({ go }) {
       <section className="ticker" aria-label="La propuesta de Calisto"><div>HAMBURGUESAS / PARRILLA / ALAS / COSTILLAS / BBQ / HAMBURGUESAS / PARRILLA / ALAS / COSTILLAS / BBQ /</div></section>
       <BurgerAssembly go={go} />
       <section className="story-section">
-        <div className="story-image"><img src="/images/calisto/euphoria-master-hd.png" alt="Euphoria Master, ganadora Burger Máster 2023 en Envigado" loading="lazy" /></div>
+        <div className="story-image"><img src="/images/calisto/euphoria-master-optimized.webp" alt="Euphoria Master, ganadora Burger Máster 2023 en Envigado" loading="lazy" width="960" height="1428" /></div>
         <div className="story-copy" data-reveal><p>GANADORES BURGER MÁSTER 2023</p><h2>EUPHORIA<br />HIZO HISTORIA.</h2><button className="text-button light-link" onClick={() => go('/menu')}>Conoce la ganadora <ArrowRight size={20} /></button></div>
       </section>
       <SocialReels />
@@ -421,13 +421,13 @@ function Home({ go }) {
 }
 
 function SocialReels() {
-  return <section className="social-reels" data-reveal><div className="reels-heading"><p>DESDE @CALISTOBURGERYBBQ</p><h2>LA PARRILLA<br />EN MOVIMIENTO.</h2><a href="https://www.instagram.com/calistoburgerybbq/" target="_blank" rel="noreferrer">Ver Instagram <ArrowRight size={18} /></a></div><div className="reels-grid">{reels.map(([id, title]) => <div className="reel-frame" key={id}><iframe src={`https://www.instagram.com/reel/${id}/embed/`} title={title} loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen /></div>)}</div></section>
+  return <section className="social-reels" data-reveal><div className="reels-heading"><p>DESDE @CALISTOBURGERYBBQ</p><h2>LA PARRILLA<br />EN MOVIMIENTO.</h2><a href="https://www.instagram.com/calistoburgerybbq/" target="_blank" rel="noreferrer">Ver Instagram <ArrowRight size={18} /></a></div><div className="reels-grid">{reels.map(([id, title, poster]) => <a className="reel-frame reel-link" key={id} href={`https://www.instagram.com/reel/${id}/`} target="_blank" rel="noreferrer" aria-label={`Ver ${title}`}><img src={poster} alt="" loading="lazy" /><span>Ver reel <InstagramLogo size={24} weight="fill" /></span></a>)}</div></section>
 }
 
 function MenuPage({ go }) {
   return (
     <main className="inner-page menu-page">
-      <section className="menu-page-hero"><div><p>LA CARTA DE CALISTO</p><h1>ELIGE TU<br />LEYENDA.</h1><span>Precios y disponibilidad tomados de la carta pública. Pueden variar según la sede.</span></div><img src="/images/calisto/euphoria-master-hd.png" alt="Euphoria Master, ganadora Burger Máster 2023 en Envigado" /></section>
+      <section className="menu-page-hero"><div><p>LA CARTA DE CALISTO</p><h1>ELIGE TU<br />LEYENDA.</h1><span>Precios y disponibilidad tomados de la carta pública. Pueden variar según la sede.</span></div><img src="/images/calisto/euphoria-master-optimized.webp" alt="Euphoria Master, ganadora Burger Máster 2023 en Envigado" width="960" height="1428" /></section>
       <nav className="category-nav" aria-label="Categorías de la carta"><a href="#burgers">Burgers</a><a href="#acompanantes">BBQ y parrilla</a><a href="#bebidas">Bebidas</a></nav>
       <MenuCategory id="burgers" number="01" title="BURGERS" items={burgers.map(item => [item.name, item.description, item.price])} featured />
       <MenuCategory id="acompanantes" number="02" title="BBQ Y PARRILLA" items={sides} />
@@ -550,7 +550,7 @@ function GroupOrders() {
 }
 
 function LocationBlock() {
-  return <section className="location"><div><MapPin size={42} weight="fill" /><h2>ENCUENTRA TU CALISTO</h2><div className="location-list"><p><strong>Envigado</strong>Calle 37 Sur #32-8</p><p><strong>La Playa</strong>Calle 51 #40-35</p><p><strong>Laureles</strong>Transversal 74 #39B-21</p><p><strong>CC Aventura</strong>Carrera 52 #65-91, Local 52-33</p></div><a href="https://www.calisto.com.co/locales/" target="_blank" rel="noreferrer">Ver sedes oficiales <ArrowRight size={18} /></a></div><div className="map-pattern" aria-hidden="true"><img src="/images/calisto/logo-calisto-white-2x.png" alt="" /></div></section>
+  return <section className="location"><div><MapPin size={42} weight="fill" /><h2>ENCUENTRA TU CALISTO</h2><div className="location-list"><p><strong>Envigado</strong>Calle 37 Sur #32-8</p><p><strong>La Playa</strong>Calle 51 #40-35</p><p><strong>Laureles</strong>Transversal 74 #39B-21</p><p><strong>CC Aventura</strong>Carrera 52 #65-91, Local 52-33</p></div><a href="https://www.calisto.com.co/locales/" target="_blank" rel="noreferrer">Ver sedes oficiales <ArrowRight size={18} /></a></div><div className="map-pattern" aria-hidden="true"><img src="/images/calisto/logo-calisto-white.webp" alt="" width="640" height="206" /></div></section>
 }
 
 function JoinTeam() {
