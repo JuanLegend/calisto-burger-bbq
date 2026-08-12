@@ -294,7 +294,7 @@ footer { padding: 6vw 4vw 24px; background: var(--ink); color: var(--paper); }
 .main-nav button:hover { padding-left: 14px; color: var(--yellow); }
 .menu-foot { display: flex; justify-content: space-between; gap: 20px; font-size: .74rem; font-weight: 800; text-transform: uppercase; }
 
-.cookie-banner { position: fixed; left: 18px; right: 18px; bottom: 18px; z-index: 70; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: var(--yellow); color: #171614; border: 2px solid #171614; box-shadow: 8px 8px 0 #171614; }
+.cookie-banner { position: fixed; top: 88px; right: 18px; z-index: 70; width: min(620px, calc(100vw - 36px)); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--yellow); color: #171614; border: 2px solid #171614; box-shadow: 7px 7px 0 #171614; }
 .cookie-banner strong { font-family: 'Anton', sans-serif; font-size: 1.4rem; font-weight: 400; }
 .cookie-banner p { margin: 2px 0 0; }
 .cookie-banner > div:last-child { display: flex; gap: 8px; }
@@ -408,7 +408,8 @@ footer { padding: 6vw 4vw 24px; background: var(--ink); color: var(--paper); }
   .socials { grid-column: auto; }
   .main-nav button { font-size: 10vw; }
   .menu-foot { font-size: .66rem; }
-  .cookie-banner { left: max(10px, env(safe-area-inset-left)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); padding: 15px; flex-direction: column; align-items: stretch; }
+  .cookie-banner { top: calc(74px + env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); width: calc(100vw - max(20px, env(safe-area-inset-left) + env(safe-area-inset-right))); padding: 12px; gap: 10px; flex-direction: column; align-items: stretch; }
+  .cookie-banner p { display: none; }
   .cookie-banner > div:last-child button { flex: 1; min-height: 45px; }
 }
 
